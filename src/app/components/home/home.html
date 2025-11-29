@@ -1,0 +1,36 @@
+<div class="course-container">
+  <div class="course-header">
+    <h1>BIGVU 101 Crash Course</h1>
+    <p>Zero editing experience to pro — your journey starts here.</p>
+    <p>Watch step-by-step video lessons to make videos with impact.</p>
+  </div>
+
+  <div class="courses-grid">
+    <div *ngFor="let course of courses; let i = index" class="course-wrapper">
+      
+      <!-- Headline OUTSIDE the box with matching color -->
+      <h2 class="course-title" [ngClass]="'title-' + i">{{ course.headline }}</h2>
+      
+      <!-- The colored box -->
+      <div class="course-card" [ngClass]="'course-' + i">
+        <span class="video-badge">📹 5 videos</span>
+
+        <div class="course-description">
+          <p>{{ course.description }}</p>
+        </div>
+
+        <div class="course-summary">
+          <ul>
+            <li *ngFor="let item of course.summary">
+              <span class="bullet">●</span> {{ item }}
+            </li>
+          </ul>
+        </div>
+
+        <button class="next-button" (click)="goToCourseDetails(course.id) ">
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

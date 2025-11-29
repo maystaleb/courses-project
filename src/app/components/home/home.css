@@ -1,0 +1,166 @@
+.course-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.course-header {
+  margin-bottom: 40px;
+  
+}
+
+.course-header h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.course-header p {
+  color: #666;
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.course-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.course-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Title colors matching border */
+.title-0 {
+  color: #4A90E2;
+}
+
+.title-1 {
+  color: #7ED321;
+}
+
+.title-2 {
+  color: #FF6B6B;
+}
+
+.course-card {
+  border: 2px solid #808080;
+  border-radius: 12px;
+  padding: 25px;
+  padding-right: 90px;  /* Add extra padding on the right for the button */
+  position: relative;
+  background: white;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+
+.video-badge {
+  background: #f0f0f0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #666;
+  display: inline-block;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.course-description {
+  margin-bottom: 2px;
+}
+
+.course-description p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.course-summary {
+  flex-grow: 1;
+  
+
+}
+
+.course-summary ul {
+  font-size: 200px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-family: Arial, Helvetica, sans-serif;
+  column-gap: -100px;    /* Gap between columns (left to right) - change this number */
+}
+
+.course-summary li {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.bullet {
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+/* Different bullet colors */
+.course-0 .bullet {
+  color: #4A90E2;
+}
+
+.course-1 .bullet {
+  color: #7ED321;
+}
+
+.course-2 .bullet {
+  color: #FF6B6B;
+}
+
+.next-button {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: #2c3e50;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.next-button:hover {
+  transform: scale(1.05);
+  background: #34495e;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}

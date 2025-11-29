@@ -1,0 +1,68 @@
+<div class="course-details-container">
+  <!-- Loading state -->
+  <div *ngIf="!course" class="loading">
+    <p>Loading course details...</p>
+    <div class="spinner"></div>
+  </div>
+  <!-- Course content -->
+  <div *ngIf="course" class="content">
+    <div class="course-layout">
+      <!-- Left side: Video Player -->
+      <div class="video-section">
+        <div class="video-player">
+          <video 
+            #videoPlayer
+            *ngIf="currentChapter" 
+            [src]="currentChapter.asset.resource.stream.url" 
+            controls
+            autoplay
+            class="video-element"
+            (loadedmetadata)="restoreVideoPosition()"
+            (ended)="playNextChapter()"
+            (timeupdate)="saveVideoPosition()">
+          </video>
+          <div *ngIf="!currentChapter" class="no-video">
+            <p>Select a chapter to start watching</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Course Info & Chapters -->
+      <div class="info-section">
+        <div class="course-header">
+          <h1>{{ course.headline }}</h1>
+          <div class="progress">
+            <span class="progress-icon">🎯</span>
+            <span class="progress-text">{{ completedCount }}/{{ course.chapters?.length || 0 }}</span>
+          </div>
+        </div>
+
+        <p class="description">{{ course.description }}</p>
+
+        <!-- Chapter List -->
+        <div class="chapters-list" *ngIf="course.chapters">
+          <div 
+            *ngFor="let chapter of course.chapters; let i = index" 
+            class="chapter-item"
+            [class.active]="currentChapter?.id === chapter.id"
+            [class.completed]="isCompleted(chapter.id)"
+            (click)="selectChapter(chapter)">
+            
+            <div class="chapter-icon">
+              <span *ngIf="isCompleted(chapter.id)" class="check-icon">✓</span>
+              <span *ngIf="!isCompleted(chapter.id)" class="play-icon">▶</span>
+            </div>
+
+            <div class="chapter-info">
+              <span class="chapter-number">{{ i + 1 }}.</span>
+              <span class="chapter-title">{{ chapter.title }}</span>
+            </div>
+
+            <span class="chapter-duration">{{ formatDuration(chapter.asset.resource.duration) }}</span>
+          </div>
+        </div>
+      </div>
+    </div> <br>
+    <button class="back-button" (click)="goBack()">← Back to Courses</button>
+  </div>
+</div>
