@@ -8,12 +8,19 @@
   <div class="courses-grid">
     <div *ngFor="let course of courses; let i = index" class="course-wrapper">
       
-      <!-- Headline OUTSIDE the box with matching color -->
+   
       <h2 class="course-title" [ngClass]="'title-' + i">{{ course.headline }}</h2>
       
-      <!-- The colored box -->
+   
       <div class="course-card" [ngClass]="'course-' + i">
-        <span class="video-badge">📹 5 videos</span>
+
+        <div class="top-row">
+          <span class="video-badge">📹 5 videos</span>
+
+          <div class="checkmark" *ngIf="StaticCourses.isCourseFinished(course.id)">
+            ✓
+          </div>
+        </div>
 
         <div class="course-description">
           <p>{{ course.description }}</p>
@@ -30,6 +37,7 @@
         <button class="next-button" (click)="goToCourseDetails(course.id) ">
           <span>→</span>
         </button>
+        
       </div>
     </div>
   </div>

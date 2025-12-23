@@ -6,4 +6,5 @@ export interface ICourse {
     description:string;
     summary:string[];
     chapters?: IChapter[];
+    finished?: boolean;
 }
